@@ -1,0 +1,54 @@
+autoload -Uz compinit
+compinit
+. ~/.zsh/etc/cdd
+
+chpwd() {
+    _cdd_chpwd
+}
+
+export EDITOR=vim
+
+autoload bashcompinit
+bashcompinit
+
+source ~/.zsh/git_conf
+SAVEHIST=10000
+HISTSIZE=10000
+
+export SCREENDIR=$HOME/.screen
+export LSCOLORS=Exfxcxdxbxegedabagacad
+export SDK=/Developer/SDKs/MacOSX10.5.sdk
+export ctags=/usr/local/bin/ctags
+export GIT_EDITOR=/usr/bin/vim
+export DEV_STATUS=debug
+
+setopt prompt_subst
+PROMPT=$'[%{\e[32m%}%/%{\e[m%}]'
+HISTFILE=~/.zsh_history
+
+setopt share_history
+setopt correct
+setopt auto_pushd
+
+alias grep="/usr/local/bin/ggrep"
+alias perldoc="perldoc -t"
+alias ls="ls -G"
+alias v="view"
+alias git="/usr/local/bin/git"
+git config --global core.excludesfile ~/.gitignore
+export SVN_EDITOR=vim
+alias mysql='nocorrect mysql'
+alias cpan='cpanm'
+function chpwd() {
+  _reg_pwd_screennum
+}
+
+export PERL5OPT=-Mlib=$HOME/perl5/lib/perl5
+
+alias gst="git status -sb"
+export PATH="$HOME/.git-hook/bin:$PATH"
+alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+
+export PYTHONDONTWRITEBYTECODE=1
+alias brew="env PATH=${PATH/\/Users\/soushi.tamura\/\.anyenv\/envs\/pyenv\/shims:/} brew"
